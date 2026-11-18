@@ -20,9 +20,14 @@ function PlantPage() {
       .catch((error) => console.log(error));
   }, []);
 
+  // Add the newly created plant to state (pessimistic rendering)
+  function handleAddPlant(newPlant) {
+    setPlants([...plants, newPlant]);
+  }
+
   return (
     <main>
-      <NewPlantForm />
+      <NewPlantForm onAddPlant={handleAddPlant} />
       <Search />
       <PlantList plants={plants} />
     </main>
